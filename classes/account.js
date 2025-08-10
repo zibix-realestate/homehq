@@ -31,7 +31,7 @@ class account {
                 user.password_encrypted = $password_encrypted,
                 user.cdt = datetime(),
                 user.validate_code = $validate_code,
-                user.validated = false,
+                user.validated = $validated,
                 user.login_code = $login_code,
                 user.username = $username,
                 user.flagged = false
@@ -51,7 +51,8 @@ class account {
             password_encrypted: form.password_encrypted,
             validate_code: uuid.v4(),
             login_code: uuid.v4(),
-            username: form.username
+            username: form.username,
+            validated: form.validated || false
         })
         if(!!data[0]){
             return data[0].user
@@ -249,6 +250,23 @@ class account {
 
 
 
+
+    update_agent_status = async (email, isAgent) => {
+        let status = isAgent ? ['agent'] : []
+        let data = await neo4j.query(`
+        MATCH (user:USER {email:$email})
+            SET user.status = $status
+        RETURN user {.*}
+        `,{
+            email: email,
+            status: status
+        })
+        if(!!data[0]){
+            return data[0].user
+        }else{
+            return false
+        }
+    }
 
 }
 

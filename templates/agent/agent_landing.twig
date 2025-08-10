@@ -1,0 +1,208 @@
+{% extends "/layouts/main.twig" %}
+
+{% block page %}
+
+<style>
+.agent-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+}
+
+.agent-section {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #111827;
+}
+
+.listings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.listing-card {
+    background: white;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.listing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+.listing-image {
+    width: 100%;
+    height: 200px;
+    background: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+}
+
+.listing-details {
+    padding: 1.5rem;
+}
+
+.blog-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.blog-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid #e5e7eb;
+}
+
+.neighborhoods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.neighborhood-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid #e5e7eb;
+}
+
+.office-info {
+    background: #f9fafb;
+    padding: 2rem;
+    border-radius: 0.75rem;
+}
+
+.custom-pages {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.custom-page-link {
+    padding: 0.75rem 1.5rem;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: #111827;
+    transition: background 0.2s;
+}
+
+.custom-page-link:hover {
+    background: #f3f4f6;
+}
+</style>
+
+<div class="container" style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
+    
+    <!-- Hero Section -->
+    <div class="agent-hero">
+        <h1 style="font-size: 3rem; margin-bottom: 1rem;">{{ agent.username }}</h1>
+        <p style="font-size: 1.25rem; opacity: 0.95;">Your Trusted Real Estate Professional</p>
+        <p style="margin-top: 1rem;">📧 {{ agent.email }}</p>
+    </div>
+    
+    <!-- About Section -->
+    <div class="agent-section">
+        <h2 class="section-title">About Me</h2>
+        <div style="background: white; padding: 2rem; border-radius: 0.75rem; border: 1px solid #e5e7eb;">
+            <p style="line-height: 1.8; color: #4b5563;">
+                With over 10 years of experience in the Bay Area real estate market, I specialize in helping clients 
+                find their dream homes and make smart investment decisions. My deep knowledge of local neighborhoods, 
+                market trends, and negotiation expertise ensures you get the best possible outcome whether you're 
+                buying or selling.
+            </p>
+        </div>
+    </div>
+    
+    <!-- Current Listings -->
+    <div class="agent-section">
+        <h2 class="section-title">Current Listings</h2>
+        <div class="listings-grid">
+            {% for listing in listings %}
+            <div class="listing-card">
+                <div class="listing-image">
+                    <span>📷 Property Image</span>
+                </div>
+                <div class="listing-details">
+                    <h3 style="margin-bottom: 0.5rem;">{{ listing.address }}</h3>
+                    <p style="color: #6b7280; margin-bottom: 1rem;">{{ listing.city }}</p>
+                    <p style="font-size: 1.5rem; font-weight: bold; color: #10b981; margin-bottom: 1rem;">{{ listing.price }}</p>
+                    <div style="display: flex; gap: 1rem; color: #6b7280;">
+                        <span>🛏️ {{ listing.beds }} beds</span>
+                        <span>🚿 {{ listing.baths }} baths</span>
+                        <span>📐 {{ listing.sqft }} sq ft</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- Blog/News -->
+    <div class="agent-section">
+        <h2 class="section-title">Latest News & Insights</h2>
+        <div class="blog-grid">
+            {% for post in blogPosts %}
+            <div class="blog-card">
+                <h3 style="margin-bottom: 0.5rem;">{{ post.title }}</h3>
+                <p style="color: #6b7280; font-size: 0.875rem; margin-bottom: 0.75rem;">{{ post.date }}</p>
+                <p style="color: #4b5563;">{{ post.excerpt }}</p>
+                <a href="#" style="color: #6366f1; text-decoration: none; font-weight: 500;">Read more →</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- Neighborhoods -->
+    <div class="agent-section">
+        <h2 class="section-title">Neighborhoods I Service</h2>
+        <div class="neighborhoods-grid">
+            {% for neighborhood in neighborhoods %}
+            <div class="neighborhood-card">
+                <h3 style="margin-bottom: 0.75rem; color: #111827;">{{ neighborhood.name }}</h3>
+                <p style="color: #6b7280; line-height: 1.6;">{{ neighborhood.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- Office Information -->
+    <div class="agent-section">
+        <h2 class="section-title">Office Information</h2>
+        <div class="office-info">
+            <h3 style="margin-bottom: 1rem;">{{ officeInfo.name }}</h3>
+            <p style="margin-bottom: 0.5rem;">📍 {{ officeInfo.address }}</p>
+            <p style="margin-bottom: 0.5rem;">{{ officeInfo.city }}</p>
+            <p style="margin-bottom: 0.5rem;">📞 {{ officeInfo.phone }}</p>
+            <p>✉️ {{ officeInfo.email }}</p>
+        </div>
+    </div>
+    
+    <!-- Custom Pages -->
+    <div class="agent-section">
+        <h2 class="section-title">More Information</h2>
+        <div class="custom-pages">
+            {% for page in customPages %}
+            <a href="{{ page.url }}" class="custom-page-link">{{ page.title }}</a>
+            {% endfor %}
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}

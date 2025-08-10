@@ -19,13 +19,11 @@
       <ul>
         {% if session.user %}
         <li>Welcome: {{ session.user.username ~ ' #' ~ session.user.username_ext }}</li>
-        <li><a href="/listings">my listings</a></li>
         <li><a href="/account/profile">profile</a></li>
         <li><a href="/account/logout">logout</a></li>
         {% else %}
-        <li><a href="/listings">browse homes</a></li>
-        <li><a href="/account/login">agent login</a></li>
-        <li><a href="/account/create">join as agent</a></li>
+        <li><a href="/account/login">sign in</a></li>
+        <li><a href="/account/create">create account</a></li>
         {% endif %}
       </ul>
       </div>

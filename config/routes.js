@@ -14,8 +14,12 @@ Router.post('/account/reset-request', 'account/account_reset_request');
 Router.get('/account/reset', 'account/account_reset');
 Router.post('/account/reset', 'account/account_reset');
 Router.get('/account/profile', 'account/account_profile');
+Router.post('/account/profile', 'account/account_profile');
 Router.get('/account/resend-verification', 'account/account_resend_verification');
 Router.post('/account/resend-verification', 'account/account_resend_verification');
+
+// Agent routes
+Router.get('/agent/:username', 'agent/agent_landing');
 
 // OAuth routes
 Router.get('/auth/google', 'auth/google@authenticate');

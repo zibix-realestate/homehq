@@ -33,7 +33,50 @@
                     {% if session.user.validated %}✓ Verified{% else %}⚠ Unverified{% endif %}
                 </span>
             </div>
+            
+            <div class="profile-field">
+                <label>Real Estate Agent</label>
+                <form method="post" style="display: inline;">
+                    <input type="hidden" name="toggle_agent" value="true">
+                    <input type="hidden" name="agent_status" value="{% if session.user.status and 'agent' in session.user.status %}false{% else %}true{% endif %}">
+                    <button type="submit" class="agent-toggle-btn" style="background: {% if session.user.status and 'agent' in session.user.status %}#4ade80{% else %}#e5e7eb{% endif %}; color: {% if session.user.status and 'agent' in session.user.status %}white{% else %}#6b7280{% endif %}; border: none; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer;">
+                        {% if session.user.status and 'agent' in session.user.status %}✓ Agent{% else %}Become Agent{% endif %}
+                    </button>
+                </form>
+            </div>
         </div>
+        
+        {% if session.user.status and 'agent' in session.user.status %}
+        <div class="agent-section" style="margin-top: 2rem; padding: 1.5rem; background: #f9fafb; border-radius: 0.75rem;">
+            <h3 style="margin-bottom: 1rem; color: #111827;">Agent Dashboard</h3>
+            <div class="agent-menu" style="display: grid; gap: 0.75rem;">
+                <a href="/agent/{{ session.user.username }}" class="agent-menu-item" style="padding: 0.75rem; background: white; border-radius: 0.5rem; text-decoration: none; color: #111827; border: 1px solid #e5e7eb; display: flex; align-items: center; justify-content: space-between;">
+                    <span>🏠 Landing Page</span>
+                    <span style="color: #6b7280;">→</span>
+                </a>
+                <a href="/agent/{{ session.user.username }}/listings" class="agent-menu-item" style="padding: 0.75rem; background: white; border-radius: 0.5rem; text-decoration: none; color: #111827; border: 1px solid #e5e7eb; display: flex; align-items: center; justify-content: space-between;">
+                    <span>📋 Listings</span>
+                    <span style="color: #6b7280;">→</span>
+                </a>
+                <a href="/agent/{{ session.user.username }}/blog" class="agent-menu-item" style="padding: 0.75rem; background: white; border-radius: 0.5rem; text-decoration: none; color: #111827; border: 1px solid #e5e7eb; display: flex; align-items: center; justify-content: space-between;">
+                    <span>📝 Blog</span>
+                    <span style="color: #6b7280;">→</span>
+                </a>
+                <a href="/agent/{{ session.user.username }}/neighborhoods" class="agent-menu-item" style="padding: 0.75rem; background: white; border-radius: 0.5rem; text-decoration: none; color: #111827; border: 1px solid #e5e7eb; display: flex; align-items: center; justify-content: space-between;">
+                    <span>🗺️ Neighborhoods</span>
+                    <span style="color: #6b7280;">→</span>
+                </a>
+                <a href="/agent/{{ session.user.username }}/pages" class="agent-menu-item" style="padding: 0.75rem; background: white; border-radius: 0.5rem; text-decoration: none; color: #111827; border: 1px solid #e5e7eb; display: flex; align-items: center; justify-content: space-between;">
+                    <span>📄 Custom Pages</span>
+                    <span style="color: #6b7280;">→</span>
+                </a>
+                <a href="/agent/{{ session.user.username }}/office" class="agent-menu-item" style="padding: 0.75rem; background: white; border-radius: 0.5rem; text-decoration: none; color: #111827; border: 1px solid #e5e7eb; display: flex; align-items: center; justify-content: space-between;">
+                    <span>🏢 Office Page</span>
+                    <span style="color: #6b7280;">→</span>
+                </a>
+            </div>
+        </div>
+        {% endif %}
         
         <div class="profile-actions">
             <a href="/account/reset-request" class="submit-button" style="text-decoration: none; text-align: center; display: block;">Reset Password</a>

@@ -41,9 +41,12 @@ class google_auth {
   authenticate = passport.authenticate('google', { scope: ['profile', 'email'] })
   
   callback = [
-    passport.authenticate('google', { failureRedirect: '/account/login' }),
+    passport.authenticate('google', { 
+      failureRedirect: '/account/login',
+      session: false  // Disable Passport's session handling
+    }),
     async (req, res) => {
-      // Auto-login the user
+      // Auto-login the user using our custom session system
       let session = await session_data.update(req, res, {})
       await account.auto_login(session, req.user)
       res.redirect('/account/profile')

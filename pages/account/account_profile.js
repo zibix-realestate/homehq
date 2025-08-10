@@ -14,6 +14,17 @@ class account_profile {
       return
     }
 
+    // Handle agent status toggle
+    if(req.body.toggle_agent){
+      const isAgent = req.body.agent_status === 'true'
+      const updatedUser = await account.update_agent_status(session.user.email, isAgent)
+      if(updatedUser){
+        session.user = updatedUser
+      }
+      res.redirect('/account/profile')
+      return
+    }
+
     res.render(page_template, {session})
   }
 }
