@@ -1,0 +1,26 @@
+{% extends "/layouts/main.twig" %}
+
+{% block page %}
+
+<div class="account-container">
+    <div class="form-header">
+        <h1>Account Created</h1>
+    </div>
+    
+    <div class="form-body">
+        <div class="success-message">
+            <h2>Welcome to HomeHQ!</h2>
+            <p>Thank you for creating an account with us.</p>
+            <p>A verification email has been sent to:</p>
+            <p><strong>{{form.email}}</strong></p>
+            <p>Please check your email and click the verification link to activate your account.</p>
+        </div>
+    </div>
+    
+    <div class="form-links">
+        <a href="/account/login">Go to Login</a> | 
+        <a href="/">Return to Home</a>
+    </div>
+</div>
+
+{% endblock %}

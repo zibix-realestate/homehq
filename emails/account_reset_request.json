@@ -1,0 +1,5 @@
+{
+    "subject":"HomeHQ Password Reset",
+    "html":"<p><b>Reset your password.</b></p><p>Click here: <a href='{{domain}}/account/reset?rcode={{reset_code}}'>Reset Link</a>\nto reset your password.</p>",
+    "text":"HomeHQ Password Reset\n\nClick Here: {{domain}}/account/reset?rcode={{reset_code}} to reset your password."
+}

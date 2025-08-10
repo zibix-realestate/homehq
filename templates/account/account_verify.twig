@@ -1,0 +1,35 @@
+{% extends "/layouts/main.twig" %}
+
+{% block page %}
+
+<div class="account-container">
+    {% if user %}
+        <div class="form-header">
+            <h1>Verification Success</h1>
+        </div>
+        <div class="form-body">
+            <div class="success-message">
+                <h2>Account Verified!</h2>
+                <p>Your account has been successfully verified and you are now logged in.</p>
+            </div>
+        </div>
+        <div class="form-links">
+            <a href="/">Return to Home Page</a>
+        </div>
+    {% else %}
+        <div class="form-header">
+            <h1>Verification Failed</h1>
+        </div>
+        <div class="form-body">
+            <div class="error-message">
+                <p>This verification link is invalid or has expired.</p>
+            </div>
+        </div>
+        <div class="form-links">
+            <a href="/account/create">Create New Account</a> | 
+            <a href="/account/login">Login</a>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

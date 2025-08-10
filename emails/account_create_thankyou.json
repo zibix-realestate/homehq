@@ -1,0 +1,5 @@
+{
+    "subject":"Welcome to HomeHQ",
+    "html":"<p><b>Welcome to HomeHQ</b></p><p>Step 1: Click here: <a href='{{domain}}/account/verify?vcode={{verify_code}}'>Verification Link</a>\nto verify your account.</p>",
+    "text":"Welcome to HomeHQ\n\nStep 1: Click Here: {{domain}}/account/verify?vcode={{verify_code}} to verify your account."
+}

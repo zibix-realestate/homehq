@@ -1,0 +1,51 @@
+{% extends "/layouts/main.twig" %}
+
+{% block page %}
+
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-logo">
+            <img src="/images/homehq_logo.svg" alt="HomeHQ" class="logo-image" style="height: 64px; width: auto;">
+        </div>
+        
+        <h1 class="login-title">Resend Verification</h1>
+        
+        {% if success %}
+            <div class="success-notification">
+                <div class="success-icon">✓</div>
+                <h2>Email Sent!</h2>
+                <p>A new verification email has been sent to your email address. Please check your inbox and click the verification link to activate your account.</p>
+                <p>If you don't see the email, please check your spam folder.</p>
+            </div>
+            
+            <div class="signup-link">
+                <a href="/account/login">← Back to Login</a> • <a href="/">Home</a>
+            </div>
+        {% else %}
+            <p class="login-subtitle">Enter your email address to resend the verification email.</p>
+            
+            <form method="post" name="resend_verification" action="/account/resend-verification" class="login-form">
+                <input type="hidden" name="resend_verification" value="true">
+                
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" value="{{ form.email }}" placeholder="colyn@example.com" class="form-input" required autofocus>
+                    {% if errors.email == true %}
+                    <div class="error-message">{{ errors.email_text }}</div>
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="submit-button">
+                    Resend Verification Email
+                </button>
+            </form>
+            
+            <div class="signup-link">
+                <a href="/account/login">← Back to Login</a> • <a href="/account/create">Create New Account</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock %}

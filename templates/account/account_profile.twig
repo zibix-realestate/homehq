@@ -1,0 +1,52 @@
+{% extends "/layouts/main.twig" %}
+
+{% block page %}
+
+<div class="login-container">
+    <div class="login-card profile-card">
+        <div class="login-logo">
+            <img src="/images/homehq_logo.svg" alt="HomeHQ" class="logo-image" style="height: 64px; width: auto;">
+        </div>
+        
+        <h1 class="login-title">Account Profile</h1>
+        <p class="login-subtitle">Manage your account settings</p>
+        
+        <div class="profile-section">
+            <div class="profile-field">
+                <label>Username</label>
+                <span class="profile-value">{{ session.user.username }}</span>
+            </div>
+            
+            <div class="profile-field">
+                <label>Email</label>
+                <span class="profile-value">{{ session.user.email }}</span>
+            </div>
+            
+            <div class="profile-field">
+                <label>Account Created</label>
+                <span class="profile-value">{{ session.user.cdt.year.low }}-{{ '%02d'|format(session.user.cdt.month.low) }}-{{ '%02d'|format(session.user.cdt.day.low) }}</span>
+            </div>
+            
+            <div class="profile-field">
+                <label>Account Status</label>
+                <span class="profile-value {% if session.user.validated %}verified{% else %}unverified{% endif %}">
+                    {% if session.user.validated %}✓ Verified{% else %}⚠ Unverified{% endif %}
+                </span>
+            </div>
+        </div>
+        
+        <div class="profile-actions">
+            <a href="/account/reset-request" class="submit-button" style="text-decoration: none; text-align: center; display: block;">Reset Password</a>
+            {% if not session.user.validated %}
+                <a href="/account/resend-verification" class="otp-button" style="text-decoration: none; text-align: center; display: block; margin-top: 1rem;">Resend Verification Email</a>
+            {% endif %}
+        </div>
+        
+        <div class="signup-link">
+            <a href="/">← Back to Home</a> • <a href="/account/logout">Logout</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

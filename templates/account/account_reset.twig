@@ -1,0 +1,30 @@
+{% extends "/layouts/main.twig" %}
+
+{% block page %}
+
+<div class="account-container">
+    <div class="form-header">
+        <h1>Reset Password</h1>
+    </div>
+    
+    <div class="form-body">
+        {% if errors.rcode == true %}
+            <div class="error-message">{{ errors.rcode_text }}</div>
+        {% endif %}
+        
+        <form method="post" name="account_reset" action="/account/reset" class="account-form">
+            <input type="hidden" name="account_reset" value="true">
+
+            <div class="form-group">
+                <input type="password" name="password" value="" placeholder="{{placeholders.password}}" class="form-input">
+                {% if errors.password == true %}<div class="error-message">{{ errors.password_text }}</div>{% endif %}
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Reset Password" class="form-submit">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

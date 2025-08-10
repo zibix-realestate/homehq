@@ -1,0 +1,37 @@
+{% extends "/layouts/main.twig" %}
+
+{% block page %}
+
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-logo">
+            <img src="/images/homehq_logo.svg" alt="HomeHQ" class="logo-image" style="height: 64px; width: auto;">
+        </div>
+        
+        <h1 class="login-title">One-Time Password</h1>
+        <p class="login-subtitle">We'll send a code to your email to sign you in.</p>
+        
+        <form method="post" action="/account/otp-request" class="login-form">
+            <input type="hidden" name="otp_request" value="true">
+            
+            <div class="form-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="{{form.email}}" placeholder="colyn@example.com" class="form-input" required autofocus>
+                {% if errors.email == true %}
+                <div class="error-message">{{ errors.email_text }}</div>
+                {% endif %}
+            </div>
+            
+            <button type="submit" class="submit-button">
+                Send me a code
+            </button>
+        </form>
+        
+        <div class="signup-link">
+            <a href="/account/login">← Back to sign in</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

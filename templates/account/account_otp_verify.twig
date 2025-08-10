@@ -1,0 +1,51 @@
+{% extends "/layouts/main.twig" %}
+
+{% block page %}
+
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-logo">
+            <img src="/images/homehq_logo.svg" alt="HomeHQ" class="logo-image" style="height: 64px; width: auto;">
+        </div>
+        
+        <h1 class="login-title">Enter Code</h1>
+        <p class="login-subtitle">We sent a 6-digit code to {{form.email}}</p>
+        
+        <form method="post" action="/account/otp-verify" class="login-form">
+            <input type="hidden" name="otp_verify" value="true">
+            
+            <div class="form-field">
+                <label for="otp">Verification Code</label>
+                <input type="text" 
+                       id="otp" 
+                       name="otp" 
+                       maxlength="6" 
+                       pattern="[0-9]{6}" 
+                       placeholder="000000" 
+                       class="form-input otp-input" 
+                       required 
+                       autofocus
+                       autocomplete="off">
+                {% if errors.otp == true %}
+                <div class="error-message">{{ errors.otp_text }}</div>
+                {% endif %}
+            </div>
+            
+            <button type="submit" class="submit-button">
+                Verify code
+            </button>
+        </form>
+        
+        <div class="resend-section">
+            <p>Didn't receive a code?</p>
+            <a href="/account/otp-request">Send a new code</a>
+        </div>
+        
+        <div class="signup-link">
+            <a href="/account/login">← Back to sign in</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,1 @@
+ssh -i /Users/ericwiltshire/.ssh/bibleary root@164.90.128.207

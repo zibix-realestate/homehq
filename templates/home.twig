@@ -1,0 +1,114 @@
+{% extends "/layouts/main.twig" %}
+
+{% block page %}
+
+<div class="home-container">
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Find Your Dream Home</h1>
+            <p class="hero-subtitle">Connect with top real estate agents and discover the perfect property</p>
+            <div class="hero-search">
+                <input type="text" placeholder="Enter city, neighborhood, or ZIP code" class="search-input">
+                <button class="search-button">Search Homes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dual Audience Section -->
+    <div class="audience-section">
+        <div class="audience-container">
+            <!-- Home Buyers/Sellers Side -->
+            <div class="audience-card buyers-card">
+                <div class="audience-icon">🏠</div>
+                <h2>Looking for a Home?</h2>
+                <p>Browse thousands of listings from verified agents. Find your perfect home with detailed photos, virtual tours, and neighborhood insights.</p>
+                <ul class="feature-list">
+                    <li>Browse verified listings</li>
+                    <li>Advanced search filters</li>
+                    <li>Virtual tours & photos</li>
+                    <li>Neighborhood insights</li>
+                    <li>Connect directly with agents</li>
+                </ul>
+                <div class="audience-actions">
+                    <button class="primary-button">Browse Listings</button>
+                    <button class="secondary-button">Advanced Search</button>
+                </div>
+            </div>
+
+            <!-- Real Estate Agents Side -->
+            <div class="audience-card agents-card">
+                <div class="audience-icon">🏢</div>
+                <h2>Real Estate Agent?</h2>
+                <p>Join our platform to showcase your listings, connect with qualified buyers, and grow your real estate business with powerful tools.</p>
+                <ul class="feature-list">
+                    <li>Create your agent profile</li>
+                    <li>Manage your listings</li>
+                    <li>Lead generation tools</li>
+                    <li>Analytics & insights</li>
+                    <li>Client communication</li>
+                </ul>
+                <div class="audience-actions">
+                    <a href="/account/create" class="primary-button">Join as Agent</a>
+                    <a href="/account/login" class="secondary-button">Agent Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Section -->
+    <div class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">10,000+</div>
+                <div class="stat-label">Active Listings</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Verified Agents</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">25</div>
+                <div class="stat-label">Cities Covered</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Client Satisfaction</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="process-section">
+        <h2 class="section-title">How HomeHQ Works</h2>
+        <div class="process-grid">
+            <div class="process-card">
+                <div class="process-number">1</div>
+                <h3>Search & Discover</h3>
+                <p>Browse listings or connect with agents based on your location and preferences.</p>
+            </div>
+            <div class="process-card">
+                <div class="process-number">2</div>
+                <h3>Connect & Tour</h3>
+                <p>Schedule viewings, virtual tours, and connect directly with verified agents.</p>
+            </div>
+            <div class="process-card">
+                <div class="process-number">3</div>
+                <h3>Find Your Home</h3>
+                <p>Make offers, negotiate terms, and close deals with professional guidance.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <h2>Ready to Get Started?</h2>
+        <p>Whether you're buying, selling, or representing clients, HomeHQ has the tools you need.</p>
+        <div class="cta-actions">
+            <button class="cta-primary">Start House Hunting</button>
+            <a href="/account/create" class="cta-secondary">Become an Agent</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

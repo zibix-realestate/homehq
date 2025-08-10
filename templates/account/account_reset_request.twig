@@ -1,0 +1,30 @@
+{% extends "/layouts/main.twig" %}
+
+{% block page %}
+
+<div class="account-container">
+    <div class="form-header">
+        <h1>Reset Password</h1>
+    </div>
+    
+    <div class="form-body">
+        <form method="post" name="account_reset" action="/account/reset-request" class="account-form">
+            <input type="hidden" name="account_reset" value="true">
+            
+            <div class="form-group">
+                <input type="text" name="email" value="" placeholder="{{placeholders.email}}" class="form-input">
+                {% if errors.email == true %}<div class="error-message">{{ errors.email_text }}</div>{% endif %}
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Request Reset" class="form-submit">
+            </div>
+        </form>
+    </div>
+    
+    <div class="form-links">
+        <a href="/account/login">Back to Login</a>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HomeHQ</title>
+  <link rel="stylesheet" href="/css/homehq.css">
+  <script src="/js/homehq.js"></script>
+</head>
+<body>
+    <div id="navigation">
+      <div id="logo">
+        <a href="/">
+          <img src="/images/homehq_logo.svg" alt="HomeHQ" class="logo-image">
+          <span class="logo-text">HomeHQ</span>
+        </a>
+      </div>
+      <div id="account_nav">
+      <ul>
+        {% if session.user %}
+        <li>Welcome: {{ session.user.username ~ ' #' ~ session.user.username_ext }}</li>
+        <li><a href="/listings">my listings</a></li>
+        <li><a href="/account/profile">profile</a></li>
+        <li><a href="/account/logout">logout</a></li>
+        {% else %}
+        <li><a href="/listings">browse homes</a></li>
+        <li><a href="/account/login">agent login</a></li>
+        <li><a href="/account/create">join as agent</a></li>
+        {% endif %}
+      </ul>
+      </div>
+    </div>
+    <div id="content_spacer_top"></div>
+    <div id="content">
+    {% block page %} {% endblock %}
+    </div>
+    <div id="content_spacer_bot"></div>
+</body>
+</html>
