@@ -38,7 +38,7 @@ app.use((req, res, next) => {
 });
 
 const routes = require("./config/routes")
-const neo4j = new require('@classes/neo4j')
+const neo4j = new require('@classes/firestore')
 
 
 app.use(routes);

@@ -19,16 +19,16 @@ Router.get('/account/resend-verification', 'account/account_resend_verification'
 Router.post('/account/resend-verification', 'account/account_resend_verification');
 
 // Agent routes
-Router.get('/agent/:username', 'agent/agent_landing');
+Router.get('/agent/:username', 'agent/agent_landing_firestore');
 
 // OAuth routes
 Router.get('/auth/google', 'auth/google@authenticate');
 Router.get('/auth/google/callback', 'auth/google@callback');
 
 // OTP routes
-Router.get('/account/otp-request', 'account/account_otp_request');
+Router.get('/account/otp-request', 'account/account_otp_request_firestore');
 Router.post('/account/otp-request', 'account/account_otp_request');
-Router.get('/account/otp-verify', 'account/account_otp_verify');
+Router.get('/account/otp-verify', 'account/account_otp_verify_firestore');
 Router.post('/account/otp-verify', 'account/account_otp_verify');
 
 module.exports = Router.router

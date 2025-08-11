@@ -1,5 +1,5 @@
-const neo4j = new require('@classes/neo4j')
-const session_data = new require('@classes/session')
+const neo4j = new require('@classes/firestore')
+const session_data = new require('@classes/session_firestore')
 const twig = require('twig')
 
 class home {

@@ -1,7 +1,7 @@
 const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20').Strategy
-const account = require('@classes/account')
-const session_data = require('@classes/session')
+const account = require('@classes/account_firestore')
+const session_data = require('@classes/session_firestore')
 const { v4: uuid } = require('uuid')
 
 // Configure Google Strategy

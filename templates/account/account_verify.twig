@@ -2,34 +2,47 @@
 
 {% block page %}
 
-<div class="account-container">
-    {% if user %}
-        <div class="form-header">
-            <h1>Verification Success</h1>
-        </div>
-        <div class="form-body">
-            <div class="success-message">
-                <h2>Account Verified!</h2>
-                <p>Your account has been successfully verified and you are now logged in.</p>
+<div class="login-container">
+    <div class="login-card">
+        {% if user %}
+            <div class="login-logo">
+                <img src="/images/homehq_logo.svg" alt="HomeHQ" class="logo-image" style="height: 64px; width: auto;">
             </div>
-        </div>
-        <div class="form-links">
-            <a href="/">Return to Home Page</a>
-        </div>
-    {% else %}
-        <div class="form-header">
-            <h1>Verification Failed</h1>
-        </div>
-        <div class="form-body">
-            <div class="error-message">
-                <p>This verification link is invalid or has expired.</p>
+            
+            <div class="success-notification">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" style="margin: 0 auto 1rem;">
+                    <circle cx="12" cy="12" r="10" stroke="#4ab299" stroke-width="2"/>
+                    <path d="M7 12l3 3 7-7" stroke="#4ab299" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h1 class="login-title">Account Verified!</h1>
+                <p class="login-subtitle">Your account has been successfully verified and you are now logged in.</p>
             </div>
-        </div>
-        <div class="form-links">
-            <a href="/account/create">Create New Account</a> | 
-            <a href="/account/login">Login</a>
-        </div>
-    {% endif %}
+            
+            <a href="/" class="submit-button" style="text-align: center; text-decoration: none; display: block;">
+                Continue to Home
+            </a>
+        {% else %}
+            <div class="login-logo">
+                <img src="/images/homehq_logo.svg" alt="HomeHQ" class="logo-image" style="height: 64px; width: auto;">
+            </div>
+            
+            <h1 class="login-title">Verification Failed</h1>
+            <p class="login-subtitle">This verification link is invalid or has expired.</p>
+            
+            <div class="error-message" style="margin: 2rem 0;">
+                Please try creating a new account or logging in with your existing credentials.
+            </div>
+            
+            <div style="display: flex; gap: 1rem;">
+                <a href="/account/create" class="submit-button" style="text-align: center; text-decoration: none; flex: 1;">
+                    Create Account
+                </a>
+                <a href="/account/login" class="otp-button" style="text-align: center; text-decoration: none; flex: 1;">
+                    Sign In
+                </a>
+            </div>
+        {% endif %}
+    </div>
 </div>
 
 {% endblock %}

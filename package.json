@@ -9,6 +9,7 @@
     "email-validator": "^2.0.4",
     "express": "^4.19.2",
     "express-session": "^1.18.2",
+    "firebase-admin": "^13.4.0",
     "module-alias": "^2.2.3",
     "neo4j-driver": "^5.19.0",
     "passport": "^0.7.0",

@@ -673,9 +673,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    min-height: 100vh;
+    min-height: calc(100vh - 60px);
     padding: 2rem;
-    padding-top: 80px;
+    margin: -40px -20px;
     background: transparent;
     position: relative;
     z-index: 1;
